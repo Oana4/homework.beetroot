@@ -7,4 +7,4 @@ try:
 except IndexError:
     print("We detected an index error!")
 
-# same for index error
+# same for key error
