@@ -1,3 +1,7 @@
+# Create list which will have 1000000 sorted numbers from 1 to 1000000. After it, create a copy of this list and shuffle
+# the values. After it, filter all odd elements, and measure, how much time it'll take for sorted and unsorted list.
+
+
 import copy
 from random import shuffle
 from time import time
