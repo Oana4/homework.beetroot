@@ -1,3 +1,6 @@
+# tuple(1, 2, 3, 1, 4) - find an index of second item with value "1"
+
+
 my_tuple = 1, 2, 3, 1, 4
 my_tuple_something = tuple(reversed(my_tuple))
 
