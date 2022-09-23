@@ -1,3 +1,12 @@
+# Description:
+
+# You have two strings s and t 
+# Function should check is it possible to replace letters in t to get s, 
+# without changing the order of letters and same letters should be replaced with same other letters
+
+#Example inputs/outputs:
+# “egg” and “add” -> True, “egg” and “adf” -> False
+
 t = 'sshh'
 s = 'bbnn'
 
