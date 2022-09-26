@@ -1,11 +1,12 @@
 import os
+import json
 
 current_directory = os.curdir
 files_in_current_dir = [f for f in os.listdir(current_directory) if os.path.isfile(os.path.join(current_directory, f))]
 
 if "phonebook.json" in files_in_current_dir:
     with open('phonebook.json') as f:
-        phonebook = list(f.read())
+        phonebook = json.load(f)
 
     dict_of_actions = {
         1: 'add a new record',
@@ -114,7 +115,7 @@ if "phonebook.json" in files_in_current_dir:
 
         if user_command == '9':
             with open('phonebook.json', 'w') as f:
-                f.write(str(phonebook))
+                json.dump(phonebook, f)
             break
 
         print('\n')
