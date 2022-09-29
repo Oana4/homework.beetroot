@@ -1,8 +1,8 @@
 class CustomException(Exception):
     def __init__(self, msg):
         self.msg = msg
-        with open("logs.txt", "w") as log_file:
-            log_file.write(msg)
+        with open("logs.txt", "a") as log_file:
+            log_file.write(f"\n {msg}")
 
 
 try:
