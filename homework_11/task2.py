@@ -16,7 +16,6 @@ class Mathematician:
 
 m = Mathematician()
 
-print(m.square_nums([7, 11, 5, 4]))                     # == [49, 121, 25, 16]
-print(m.remove_positives([26, -11, -8, 13, -90]))       # == [-11, -8, -90]
-print(m.filter_leaps([2001, 1884, 1995, 2003, 2020]))   # == [1884, 2020]
-
+assert m.square_nums([7, 11, 5, 4]) == [49, 121, 25, 16]
+assert m.remove_positives([26, -11, -8, 13, -90]) == [-11, -8, -90]
+assert m.filter_leaps([2001, 1884, 1995, 2003, 2020]) == [1884, 2020]
