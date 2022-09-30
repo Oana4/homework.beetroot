@@ -1,4 +1,4 @@
-Task 1
+**Task 1**
 
 Method overloading.
 
@@ -9,7 +9,7 @@ Also, create a simple generic function, which takes as input instance of a Cat o
  
   
 
-Task 2
+**Task 2**
 
 Library
 
@@ -49,7 +49,7 @@ class Author:
   
  
 
-Task 3
+**Task 3**
 
 Fraction
 
