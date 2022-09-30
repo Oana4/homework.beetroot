@@ -6,7 +6,7 @@ Create a base class named Animal with a method called talk and then create two s
 
 Also, create a simple generic function, which takes as input instance of a Cat or Dog classes and performs talk method on input parameter.  
 
- 
+ \n
 
 Task 2
 
@@ -45,6 +45,7 @@ class Book:
 class Author:
     pass
 
+\n
  
 
 Task 3
