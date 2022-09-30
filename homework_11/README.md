@@ -1,12 +1,13 @@
-Task 1
+**Task 1**
 
 School
 
 Make a class structure in python representing people at school. Make a base class called Person, a class called Student, and another one called Teacher. Try to find as many methods and attributes as you can which belong to different classes, and keep in mind which are common and which are not. For example, the name should be a Person attribute, while salary should only be available to the teacher. 
 
  
+<br />
 
-Task 2
+**Task 2**
 
 Mathematician
 
@@ -28,9 +29,9 @@ assert m.square_nums([7, 11, 5, 4]) == [49, 121, 25, 16]
 assert m.remove_positives([26, -11, -8, 13, -90]) == [-11, -8, -90]
 assert m.filter_leaps([2001, 1884, 1995, 2003, 2020]) == [1884, 2020]
 
- 
+ <br />
 
-Task 3
+**Task 3**
 
 Product Store
 
