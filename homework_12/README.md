@@ -1,0 +1,62 @@
+Task 1
+
+Method overloading.
+
+Create a base class named Animal with a method called talk and then create two subclasses: Dog and Cat, and make their own implementation of the method talk be different. For instance, Dog’s can be to print "woof woof", while Cat’s can be to print "meow".
+
+Also, create a simple generic function, which takes as input instance of a Cat or Dog classes and performs talk method on input parameter.  
+
+ 
+
+Task 2
+
+Library
+
+Write a class structure that implements a library. Classes:
+
+1) Library - name, books = [], authors = []
+
+2) Book - name, year, author (author must be an instance of Author class)
+
+3) Author - name, country, birthday, books = []
+
+Library class
+
+Methods:
+
+- new_book(name: str, year: int, author: Author) - returns an instance of Book class and adds the book to the books list for the current library.
+
+- group_by_author(author: Author) - returns a list of all books grouped by the specified author
+
+- group_by_year(year: int) - returns a list of all the books grouped by the specified year
+
+All 3 classes must have a readable __repr__ and __str__ methods.
+
+ 
+
+Also, the book class should have a class variable which holds the amount of all existing books
+
+class Library:
+    pass
+
+class Book:
+    pass
+
+class Author:
+    pass
+
+ 
+
+Task 3
+
+Fraction
+
+Create a Fraction class, which will represent all basic arithmetic logic for fractions (+, -, /, *) with appropriate checking and error handling
+
+class Fraction:
+	pass
+
+x = Fraction(1/2)
+y = Fraction(1/4)
+
+x + y == Fraction(3/4)
