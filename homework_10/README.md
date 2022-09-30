@@ -1,4 +1,4 @@
-Task 1
+**Task 1**
 
 A Person class
 
@@ -7,16 +7,19 @@ Make a class called Person. Make the __init__() method take firstname, lastname,
 "Hello, my name is Carl Johnson and I’m 26 years old"
 
  
+ <br />
+ 
 
-Task 2
+**Task 2**
 
 Doggy age
 
 Create a class Dog with class attribute age_factor equals to 7. Make __init__() which takes values for a dog’s age. Then create a method human_age which returns the dog’s age in human equivalent.
 
  
+<br />
 
-Task 3
+**Task 3**
 
 TV controller
 
