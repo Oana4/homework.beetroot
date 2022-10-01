@@ -27,7 +27,7 @@ class Author:
 
     def __str__(self):
         return f"The author's name is {self.name}, he was born in {self.country} on {self.birthday} " \
-               f"and he wrote the following books: {self.books}."
+               f"and he wrote the following books that can be found in our library: {self.books}."
 
     def __repr__(self):
         return self.__str__()
@@ -49,6 +49,9 @@ class Library:
         one_book = Book(name, year, author)
         self.books.append(one_book)
         self.authors.add(author.name)
+        # add an extra feature to connect the new book to the list of books of the current author
+        # available in our library
+        author.books.append(one_book.name)
         Book.amount_of_books += 1
         return one_book
 
@@ -69,16 +72,18 @@ class Library:
         return self.__str__()
 
 
-fav_author = Author('Agatha Christie', 'UK', '15th Sept 1890', ["Crime on Nile", "Death on a plane"])
-# print(fav_author.__repr__())
-another_author = Author('Andy Weir', 'UK', 'IDK', ["The Martian"])
+fav_author = Author('Agatha Christie', 'UK', '15th Sept 1890')
+another_author = Author('Andy Weir', 'UK', 'IDK')
+
+book_1 = Book("Death on a plane", 1933, fav_author)
+book_2 = Book("Hail Mary Project", 2021, another_author)
+book_3 = Book("Crime on Nile", 1915, fav_author)
 
 my_lib = Library('Huge Library')
-# print(my_lib.__repr__())
-my_lib.new_book("Death on a plane", 1933, fav_author)
-
-my_lib.new_book('Hail Mary Project', 2021, another_author)
-my_lib.new_book('Crime on Nile', 1915, fav_author)
+my_lib.new_book(book_1.name, book_1.year, book_1.author)
+my_lib.new_book(book_2.name, book_2.year, book_2.author)
+my_lib.new_book(book_3.name, book_3.year, book_3.author)
+print(fav_author)
 # print(my_lib.__str__())
 
 print(my_lib.group_by_author(fav_author))
