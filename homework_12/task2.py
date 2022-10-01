@@ -52,7 +52,7 @@ class Library:
         # add an extra feature to connect the new book to the list of books of the current author
         # available in our library
         author.books.append(one_book.name)
-        Book.amount_of_books += 1
+        Book.amount_of_books += 1           # counts all existing books in libraries
         return one_book
 
     def group_by_author(self, author: Author):
