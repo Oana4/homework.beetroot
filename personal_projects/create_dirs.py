@@ -10,7 +10,7 @@ new_path = "/home/oana/test_code"      # this should be the path in which I want
 
 # loop code for creating 10 brand-new directories
 for i in range(10):                                     # make that loop with 10 iterations
-    directory = f"root_data{i}"                        # create a new directory name
+    directory = f"root_data_{i}"                        # create a new directory name
     specific_path = os.path.join(new_path, directory)   # create the path for the new directory
     try:
         os.makedirs(specific_path)                      # actually make the directory there
