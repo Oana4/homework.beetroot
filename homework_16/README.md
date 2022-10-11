@@ -13,3 +13,5 @@ Create your own implementation of a built-in function range(), named in_range(),
 **Task 3**
 
 Create your own implementation of an iterable, which could be used inside for-in loop. Also, add logic for retrieving elements using square brackets syntax.
+
+
