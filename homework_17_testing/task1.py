@@ -17,3 +17,5 @@ class MathematicianTestCase(unittest.TestCase):
         self.assertEqual(self.mathematician.filter_leaps([2001, 1884, 1995, 2003, 2020]), [1884, 2020])
 
 
+if __name__ == "__main__":
+    unittest.main()
