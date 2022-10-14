@@ -17,3 +17,7 @@ print(sys.path)
 PYTHONPATH = "/home/oana/PycharmProjects/pythonProject/main.py"
 print(sys.path)
 # I obtained the same result
+
+sys.path.pop()
+print(sys.path)
+
