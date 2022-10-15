@@ -6,7 +6,6 @@ def count_lines(name):
     if not os.path.exists(name):
         return OSError("The path doesn't exist!")
     with open(name) as file:
-        file.seek(0)
         counter = file.readlines()
     return len(counter)
 
@@ -15,7 +14,6 @@ def count_chars(name):
     if not os.path.exists(name):
         return OSError("The path doesn't exist!")
     with open(name) as file:
-        file.seek(0)
         c_counter = file.read()
     return len(c_counter)
 
