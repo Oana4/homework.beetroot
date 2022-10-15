@@ -11,14 +11,14 @@ def replace_file_obj():
 
 
 @pytest.fixture
-def check(replace_file_obj):
+def data_to_check(replace_file_obj):
     with OpenFile(replace_file_obj, 'r') as opened_file:
         data = opened_file.read()
         return data[:10]
 
 
-def test_data(check):
-    assert check == "this is al"
+def test_data(data_to_check):
+    assert data_to_check == "this is al"
 
 # code output:
 # task3.py::test_data PASSED                                               [100%]
