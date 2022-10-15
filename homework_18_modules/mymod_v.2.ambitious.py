@@ -4,7 +4,7 @@ import os
 
 def test(name):
     if not os.path.exists(name):
-        return OSError("The path doesn't exist!")
+        raise OSError("The path doesn't exist!")
     with open(name) as file:
         counter = len(file.readlines())
         file.seek(0)
