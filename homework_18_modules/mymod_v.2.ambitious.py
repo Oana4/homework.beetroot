@@ -6,11 +6,11 @@ def test(name):
     if not os.path.exists(name):
         raise OSError("The path doesn't exist!")
     with open(name) as file:
-        counter = len(file.readlines())
+        line_counter = len(file.readlines())
         file.seek(0)
-        c_counter = len(file.read())
-    return f"For the number of lines we get {counter} lines, " \
-           f"and meanwhile we get {c_counter} characters in {name} file."
+        char_counter = len(file.read())
+    return f"For the number of lines we get {line_counter} lines, " \
+           f"and meanwhile we get {char_counter} characters in {name} file."
 
 
 print(test("mymod_v.2.ambitious.py"))
