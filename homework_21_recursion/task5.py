@@ -9,11 +9,6 @@ def sum_of_digits(digit_string: str) -> int:
     else:
         return digit_string % 10 + sum_of_digits(str(digit_string // 10))
 
-    # if len(digit_string) == 0:
-    #     return 0
-    # else:
-    #     return int(digit_string[0]) + sum_of_digits(digit_string[1:])
-
 
 assert sum_of_digits('26') == 8
 assert sum_of_digits('1234') == 10
