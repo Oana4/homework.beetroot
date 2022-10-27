@@ -9,26 +9,26 @@ from random import choices
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 
-password_alphabet = ''
-answers = set()
-
-
 def users_choice():
+    password_alphabet = ''
+    answers = set()
     ascii_option = [ascii_lowercase, ascii_uppercase, digits, punctuation]
     string_option = ['lowercase letters', 'uppercase letters', 'digits', 'punctuation']
-    for ascii_item, string_item in zip(ascii_option, string_option):
-        while True:
-            users_answer = input(f'Do you want to use {string_item}?(y/n): ')
-            if users_answer == 'y':
-                global password_alphabet
-                password_alphabet += ascii_item
-                answers.add('y')
-                break
-            elif users_answer == 'n':
-                answers.add('n')
-                break
-            else:
-                print('Please type y or n! :(')
+    while len(answers) == 0 or (len(answers) == 1 and 'n' in answers):
+        print("You must have some preferences for password's symbols. Let's see what you choose!")
+        for ascii_item, string_item in zip(ascii_option, string_option):
+            while True:
+                users_answer = input(f'Do you want to use {string_item}? (y/n): ')
+                if users_answer == 'y':
+                    password_alphabet += ascii_item
+                    answers.add('y')
+                    break
+                elif users_answer == 'n':
+                    answers.add('n')
+                    break
+                else:
+                    print('Please type y or n! :(')
+    return password_alphabet
 
 
 def password_generator():
@@ -40,13 +40,9 @@ def password_generator():
         else:
             length = 0
 
-    users_choice()
+    final_alphabet = users_choice()
 
-    while len(answers) == 1 and 'n' in answers:
-        print("Your password must have some characters!!")
-        users_choice()
-
-    password = ''.join(choices(password_alphabet, k=length))
+    password = ''.join(choices(final_alphabet, k=length))
     print("Your new generated password is: \n", password)
 
 
