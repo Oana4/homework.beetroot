@@ -11,20 +11,17 @@ from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 def users_choice():
     password_alphabet = ''
-    answers = set()
     ascii_option = [ascii_lowercase, ascii_uppercase, digits, punctuation]
     string_option = ['lowercase letters', 'uppercase letters', 'digits', 'punctuation']
-    while len(answers) == 0 or (len(answers) == 1 and 'n' in answers):
+    while len(password_alphabet) == 0:
         print("You must have some preferences for password's symbols. Let's see what you choose!")
         for ascii_item, string_item in zip(ascii_option, string_option):
             while True:
                 users_answer = input(f'Do you want to use {string_item}? (y/n): ')
                 if users_answer == 'y':
                     password_alphabet += ascii_item
-                    answers.add('y')
                     break
                 elif users_answer == 'n':
-                    answers.add('n')
                     break
                 else:
                     print('Please type y or n! :(')
