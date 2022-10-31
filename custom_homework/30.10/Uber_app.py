@@ -39,7 +39,7 @@ class User:
     #                 print("Wrong password")
 
     def sign_up(self):
-        print("Creating your account!")
+        print("Sign up process in progress!")
         self.password = input("Please type your new password: ")
         if self.__class__ == Driver:
             drivers_dictionary = load_users_from_json("drivers")
@@ -68,12 +68,12 @@ class Passenger(User):
         super().__init__()
 
 
-def new_login(username_searched, job_info):
+def new_login(username_searched, job_name):
     print("Your user exists! Let's log in!")
     logged_in = False
     while not logged_in:
         input_password = input("Please type your password: ")
-        if input_password == job_info[username_searched]:
+        if input_password == job_name[username_searched]:
             logged_in = True
             print("You are logged in")
         else:
@@ -86,16 +86,22 @@ def run_application():
     if len(drivers_info) == 0 and len(passengers_info) == 0:
         print("It seems you are the first user of our app. Please sign up!")
         start_sign_up()
-    else:
+    while True:
         print("Welcome to Uber app!")
         input_username = input("Please type your username: ")
         if input_username in drivers_info:
+            print("Hi, driver! Are you ready to help passengers today?")
             new_login(input_username, drivers_info)
+            break
         elif input_username in passengers_info:
+            print("Hi, again! Ready for a new drive with Uber? We'll find the best drivers for you!")
             new_login(input_username, passengers_info)
+            break
         else:
             print("Your user doesn't exist! Let's sign up!")
             start_sign_up()
+            drivers_info = load_users_from_json("drivers")
+            passengers_info = load_users_from_json("passengers")
 
 
 run_application()
