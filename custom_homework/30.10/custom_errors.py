@@ -1,16 +1,11 @@
-class CustomException(Exception):
-    def __init__(self, msg):
-        self.msg = msg
-        with open("logs.txt", "a") as log_file:
-            log_file.write(f"{msg} \n")
+# will just inherit functionalities of an Exception class duw to hierarchy
+class MyExceptionClass(ZeroDivisionError):
 
-
-class MyExceptionClass(RecursionError):
-    pass
+    def __init__(self, message):
+        self.message = message
 
 
 try:
-    raise CustomException("You will find this error in the logs.txt file :)")
-except CustomException as my_err:
-    print(my_err)
-
+    raise MyExceptionClass("It seems you have an error!")
+except MyExceptionClass as err:
+    print(err)
