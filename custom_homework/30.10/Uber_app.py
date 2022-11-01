@@ -38,6 +38,18 @@ class User:
     #             else:
     #                 print("Wrong password")
 
+    @staticmethod
+    def new_login(username_searched, job_name):
+        print("Your user exists! Let's log in!")
+        logged_in = False
+        while not logged_in:
+            input_password = input("Please type your password: ")
+            if input_password == job_name[username_searched]:
+                logged_in = True
+                print("You are logged in")
+            else:
+                print("Wrong password")
+
     def sign_up(self):
         print("Sign up process in progress!")
         self.password = input("Please type your new password: ")
@@ -68,18 +80,6 @@ class Passenger(User):
         super().__init__()
 
 
-def new_login(username_searched, job_name):
-    print("Your user exists! Let's log in!")
-    logged_in = False
-    while not logged_in:
-        input_password = input("Please type your password: ")
-        if input_password == job_name[username_searched]:
-            logged_in = True
-            print("You are logged in")
-        else:
-            print("Wrong password")
-
-
 def run_application():
     drivers_info = load_users_from_json("drivers")
     passengers_info = load_users_from_json("passengers")
@@ -91,11 +91,11 @@ def run_application():
         input_username = input("Please type your username: ")
         if input_username in drivers_info:
             print("Hi, driver! Are you ready to help passengers today?")
-            new_login(input_username, drivers_info)
+            User.new_login(input_username, drivers_info)
             break
         elif input_username in passengers_info:
             print("Hi, again! Ready for a new drive with Uber? We'll find the best drivers for you!")
-            new_login(input_username, passengers_info)
+            User.new_login(input_username, passengers_info)
             break
         else:
             print("Your user doesn't exist! Let's sign up!")
@@ -105,4 +105,3 @@ def run_application():
 
 
 run_application()
-
