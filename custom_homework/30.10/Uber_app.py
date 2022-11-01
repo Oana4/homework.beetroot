@@ -19,6 +19,18 @@ def start_sign_up():
         new_passenger.sign_up()
 
 
+class Order:
+
+    def __init__(self, initial_dest, final_dest, price):
+        self.initial_dest = initial_dest
+        self.final_dest = final_dest
+        self.price = price
+        self._status = 'created'
+
+    def add_order(self):
+        pass
+
+
 class User:
 
     def __init__(self):
@@ -38,8 +50,8 @@ class User:
     #             else:
     #                 print("Wrong password")
 
-    @staticmethod
-    def new_login(username_searched, job_name):
+    @classmethod
+    def new_login(cls, username_searched, job_name):
         print("Your user exists! Let's log in!")
         logged_in = False
         while not logged_in:
@@ -72,12 +84,20 @@ class Driver(User):
 
     def __init__(self):
         super().__init__()
+        self.orders = []
+
+    def add_order(self, new_order: Order):
+        self.orders.append(new_order)
 
 
 class Passenger(User):
 
     def __init__(self):
         super().__init__()
+        self.orders = []
+
+    def add_order(self, new_order: Order):
+        self.orders.append(new_order)
 
 
 def run_application():
