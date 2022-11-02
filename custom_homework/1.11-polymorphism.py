@@ -8,6 +8,8 @@ class Galaxy:
 
     @staticmethod
     def comparison(first_obj, second_obj, operator):
+        if not isinstance(second_obj, Galaxy):
+            raise NotImplementedError("Can't compare 2 objects from 2 different classes!")
         criteria_of_comparison = ''
         while criteria_of_comparison not in ['age', 'mass']:
             criteria_of_comparison = input("Please choose your comparison criteria (age or mass): ")
@@ -37,8 +39,10 @@ class Galaxy:
 
 galaxy_1 = Galaxy("Milky Way", 1.361e10, 1.5e12)
 galaxy_2 = Galaxy("Andromeda", 1.001e10, 8e11)
+not_a_galaxy = 3
 print(galaxy_1 >= galaxy_2)
 print(galaxy_1 == galaxy_2)
 print(galaxy_1 != galaxy_2)
 print(galaxy_1 < galaxy_2)
+print(galaxy_1 < not_a_galaxy)
 
