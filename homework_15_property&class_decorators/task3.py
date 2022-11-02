@@ -7,12 +7,12 @@ class TypeDecorators:
     def to_type(_type):
         def inner_to_type(func):
             @wraps(func)
-            def decorator_to_int(*args):
+            def decorator_to_type(*args):
                 try:
                     return _type(func(*args))
-                except ValueError(f"The result cannot be converted to integer") as err:
-                    raise err
-            return decorator_to_int
+                except ValueError(f"The result cannot be converted to {_type}") as err:
+                    print(err)
+            return decorator_to_type
         return inner_to_type
 
 
