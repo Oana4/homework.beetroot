@@ -24,7 +24,6 @@ class TVController:
         if TVController.current_channel == CHANNELS[-1]:
             TVController.current_channel = CHANNELS[0]
             print(f"Next channel, {TVController.current_channel}, is turned on!")
-
         else:
             index_of_current_channel = CHANNELS.index(TVController.current_channel)
             TVController.current_channel = CHANNELS[index_of_current_channel + 1]
