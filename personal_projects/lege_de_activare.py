@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import interpolate
 
+# Cod pentru legea de activare (laborator particule)
+
 x = np.array([])
 y = np.array([])
 
