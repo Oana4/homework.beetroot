@@ -9,7 +9,7 @@ class Animal:
         self.kind = kind
         self.name = name
         self.age = age
-        self.vaccinated = None
+        self._vaccinated = None
         self.list_of_animals.append(self)
 
     def __str__(self):
@@ -41,13 +41,17 @@ class Animal:
     def two_years_ago():
         return datetime.now() - timedelta(days=730.5)
 
+    @property
+    def vaccinated(self):
+        return self._vaccinated
+
     def get_vaccinated(self):
         if self.kind in ['dog', 'cat']:
             if getattr(self, 'vaccination_date', self.two_years_ago()) < self.year_ago():
                 self.vaccination_date = datetime.now()
-                self.vaccinated = True
+                self._vaccinated = True
         else:
-            self.vaccinated = False
+            self._vaccinated = False
             print("We will not vaccinate your animal!")
 
     @classmethod
@@ -69,5 +73,10 @@ if __name__ == '__main__':
     print(the_humster)
     the_humster.get_vaccinated()
     print(the_humster.vaccinated)
+
+    my_dog = Animal.dog()
+    # user input goes here, and finally we have a dog object
+    my_dog.vaccinated = True  # now our dog counts as vaccinated, but it didn't get any dose of vaccine yet!
+    print(my_dog.vaccinated)
 
     print(Animal.get_animals_treated())
