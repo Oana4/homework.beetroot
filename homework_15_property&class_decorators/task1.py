@@ -4,7 +4,7 @@ import re
 class CheckEmail:
 
     def __init__(self, email):
-        if not CheckEmail.validate(email):
+        if not self.validate(email):
             raise ValueError("This email address it's not valid.")
         self.email = email
 
