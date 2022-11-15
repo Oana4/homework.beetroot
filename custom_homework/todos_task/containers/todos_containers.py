@@ -19,17 +19,20 @@ class ListOfTodos:
         else:
             raise StopIteration()
 
-    def show_all_tasks(self):
-        for todo in self.list_of_todos:
+    @classmethod
+    def show_all_tasks(cls):
+        for todo in cls.list_of_todos:
             print(todo)
 
-    def show_missed_tasks(self):
-        for todo in self.list_of_todos:
+    @classmethod
+    def show_missed_tasks(cls):
+        for todo in cls.list_of_todos:
             if todo.past_due_date():
                 print(todo)
 
-    def find_tasks_for_today(self):
-        for todo in self.list_of_todos:
+    @classmethod
+    def find_tasks_for_today(cls):
+        for todo in cls.list_of_todos:
             if todo.todays_date():
                 print(todo)
 
