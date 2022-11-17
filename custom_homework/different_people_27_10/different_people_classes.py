@@ -59,7 +59,7 @@ class BusDriver(Person):
 
 class HospitalPatient(Person):
 
-    def __init__(self, first_name, last_name, age, family_doctor, diseases: list):
+    def __init__(self, first_name, last_name, age, family_doctor, diseases):
         super().__init__(first_name, last_name, age)
         self.family_doctor = family_doctor
         self.diseases = diseases
