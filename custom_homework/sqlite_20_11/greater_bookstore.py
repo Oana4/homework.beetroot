@@ -10,7 +10,7 @@ Use sqlite database for your data storage.
 """
 
 import sqlite3
-import datetime
+from datetime import datetime, timedelta
 
 
 class Item:
@@ -40,8 +40,9 @@ class Item:
                 """CREATE TABLE IF NOT EXISTS purchases (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 item_id integer,
-                time_sold integer,
-                income integer
+                time_sold timestamp,
+                income integer,
+                FOREIGN KEY(item_id) REFERENCES items(id)
                 )"""
             )
 
@@ -117,9 +118,63 @@ class Item:
                         "quantity": self.quantity
                     },
                 )
+                cursor.execute(
+                    f"""INSERT INTO purchases(item_id, time_sold, income) VALUES (:item_id, :time_sold, :income)""",
+                    {
+                        "item_id": self.id,
+                        "time_sold": datetime.now(),
+                        "income": self.price * sold_quantity,
+                    },
+                )
 
-    def delete_all(self, connection):
-        connection.cursor().execute("DELETE FROM items")
+    @staticmethod
+    def get_total_income(connection):
+        total_income = 0
+        period_of_time = ''
+        while period_of_time not in ['d', 'w', 'm']:
+            period_of_time = input("please choose the period over which you want to see the total income "
+                                   "(d - day, w - week, m - month: ")
+        with connection:
+            cursor = connection.cursor()
+            if period_of_time == "d":
+                a_day = timedelta(days=1)
+                cursor.execute("""SELECT income FROM purchases WHERE 
+                                  time_sold <= :current_time AND time_sold >= :a_day_before""",
+                               {'current_time': datetime.now(),
+                                'a_day_before': datetime.now() - a_day})
+                all_purchases_income = cursor.fetchall()
+                for each_income in all_purchases_income:
+                    total_income += each_income[0]
+                print("Total income in a day is: ", total_income)
+                return total_income
+            elif period_of_time == "w":
+                a_week = timedelta(weeks=1)
+                cursor.execute("""SELECT income FROM purchases WHERE 
+                                                  time_sold <= :current_time AND time_sold >= :a_week_before""",
+                               {'current_time': datetime.now(),
+                                'a_week_before': datetime.now() - a_week})
+                all_purchases_income = cursor.fetchall()
+                for each_income in all_purchases_income:
+                    total_income += each_income[0]
+                print("Total income in a week is: ", total_income)
+                return total_income
+            elif period_of_time == "m":
+                a_month = timedelta(weeks=4)
+                cursor.execute("""SELECT income FROM purchases WHERE 
+                                time_sold <= :current_time AND time_sold >= :a_month_before""",
+                               {'current_time': datetime.now(),
+                                'a_month_before': datetime.now() - a_month})
+                all_purchases_income = cursor.fetchall()
+                for each_income in all_purchases_income:
+                    total_income += each_income[0]
+                print("Total income in a month is: ", total_income)
+                return total_income
+
+    @staticmethod
+    def delete_all(connection):
+        with connection:
+            connection.cursor().execute("DELETE FROM items")
+            connection.cursor().execute("DELETE FROM purchases")
 
 
 if __name__ == "__main__":
@@ -129,13 +184,21 @@ if __name__ == "__main__":
     Item.create_table(connection)
 
     new_test_object = Item.create_or_update(
-        connection, "Test name 1", "Test type", 10, 0
+        connection, "Test name 1", "Test type", 10, 3
     )
-    print(new_test_object.quantity)
 
-    new_test_object.sell_items(connection, 4)
+    new_test_object.sell_items(connection, 1)
 
     cursor.execute(
-       "SELECT * FROM items WHERE name = 'Test name 1' and type = 'Test type'"
+        "SELECT * FROM items WHERE name = 'Test name 1' and type = 'Test type'"
     )
     print(cursor.fetchall())
+
+    Item.get_total_income(connection)
+
+    # Item.delete_all(connection)
+
+    connection.close()
+
+
+
