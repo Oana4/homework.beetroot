@@ -4,7 +4,7 @@ from time import time
 from itertools import product
 
 
-# simple measuring time decorator
+# simple time measuring decorator
 def timer_func(func):
     def wrap_func(*args):
         t1 = time()
