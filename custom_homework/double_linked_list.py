@@ -17,19 +17,14 @@ class LinkedList:
         self.num_of_list_items = 0
 
     def __iter__(self):
-        self.iter_index = 0
-        self.item_iterated = None
+        self.item_iterated = self.head
         return self
 
     def __next__(self):
-        if self.iter_index < self.num_of_list_items:
-            if self.item_iterated is None:
-                self.item_iterated = self.head
-            else:
-                self.item_iterated = self.item_iterated.next
-
-            self.iter_index += 1
-            return self.item_iterated
+        if self.item_iterated is not None:
+            current_item_iterated = self.item_iterated
+            self.item_iterated = self.item_iterated.next
+            return current_item_iterated
         raise StopIteration
 
     def add_tail_node(self, value):
