@@ -4,7 +4,9 @@ import asyncio
 
 base_url = 'https://maps.googleapis.com/maps/api/geocode/json'
 
-
+async def get_response(url):
+    return requests.get(url)
+    
 async def get_coordinates(destination):
     my_key = ''
 
@@ -12,7 +14,7 @@ async def get_coordinates(destination):
 
     full_url = base_url + f'?address={safe_destination}&key={my_key}'
 
-    response = requests.get(full_url)
+    response = await get_response(full_url)
 
     try:
         if response.status_code == 200:
